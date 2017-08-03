@@ -4,14 +4,18 @@ import ENV from 'celebscan/config/environment';
 
 export default Ember.Controller.extend({
     celebrityName: '',
+    celebrityPicture: '',
+    celebrityExtract: '',
     score: 0.0,
     operationCompleted: false,
     inProgress: false,
     people: [],
+    wikipedia: Ember.inject.service('wikipedia'),
     actions: {
         determineCelebrity(picture) {
             let apiKey = ENV.APP.apiKey;
             let modelIdentifier = 'e466caa0619f444ab97497640cefc4dc';
+            let wikipedia = this.get('wikipedia');
 
             let app = new Clarifai.App({
                 apiKey: apiKey
@@ -48,6 +52,16 @@ export default Ember.Controller.extend({
 
                     this.set('inProgress', false);
                     this.set('operationCompleted', true);
+
+                    wikipedia.findPerson(possibleMatches[0].name).then(function(result) {
+                        wikipedia.findImage(result.pageimage).then(function(imageData) {
+                            Ember.Logger.info(imageData);
+                            this.set('celebrityPicture', imageData);
+                        }.bind(this));
+
+                        this.set('celebrityName', result.title);
+                        this.set('celebrityExtract', result.extract);
+                    }.bind(this));
                 }
 
                 Ember.Logger.info(face);
