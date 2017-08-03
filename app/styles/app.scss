@@ -1,0 +1,12 @@
+@import "ember-bootstrap/bootstrap";
+@import "image-capture";
+
+.progress-indicator {
+    margin-top: 20px;
+}
+
+.celebscan-results {
+    h2 small {
+        display: block;
+    }
+}

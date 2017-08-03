@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Which celebrity do you look like?</h1>
+            {{image-capture action="determineCelebrity"}} 
+            {{#if inProgress}}
+                <p class="progress-indicator">Looking at you, finding someone that looks just like you...</p>
+            {{/if}}
+            {{#if operationCompleted}}
+            <div class="celebscan-results">
+                <h2>You look like {{celebrityName}}! <small>With a score of: {{score}}</small></h2>
+                <p>Here are the full results</p>
+                <ul>
+                    {{#each people as |person|}}
+                    <li>{{person.name}} {{person.score}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
