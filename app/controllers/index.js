@@ -50,9 +50,6 @@ export default Ember.Controller.extend({
                     this.set('score', possibleMatches[0].value);
                     this.set('people', people);
 
-                    this.set('inProgress', false);
-                    this.set('operationCompleted', true);
-
                     wikipedia.findPerson(possibleMatches[0].name).then(function(result) {
                         wikipedia.findImage(result.pageimage).then(function(imageData) {
                             Ember.Logger.info(imageData);
@@ -61,6 +58,9 @@ export default Ember.Controller.extend({
 
                         this.set('celebrityName', result.title);
                         this.set('celebrityExtract', result.extract);
+
+                        this.set('inProgress', false);
+                        this.set('operationCompleted', true);
                     }.bind(this));
                 }
 

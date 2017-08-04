@@ -1,7 +1,8 @@
-# celebscan
+# Celebscan 3000
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is a sample application to demonstrate how fun AI can be.
+Run this application and take a picture with your webcam. 
+You'll be matched against celebrities and get back who you look like.
 
 ## Prerequisites
 
