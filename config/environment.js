@@ -45,7 +45,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    let secrets = require('./secrets.js');
+    ENV.APP.apiKey = secrets.apiKey;
   }
 
   return ENV;
