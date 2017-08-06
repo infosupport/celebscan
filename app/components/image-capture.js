@@ -11,6 +11,10 @@ export default Ember.Component.extend({
             videoElement.play();
         });
     },
+    willDestroyElement() {
+        let webcam = window.webcam;
+        webcam.stream = null;
+    },
     actions: {
         takePicture() {
             let videoElement = this.$("video")[0];
@@ -20,7 +24,7 @@ export default Ember.Component.extend({
             canvas.height = 480;
 
             canvas.getContext("2d").drawImage(videoElement, 0,0, canvas.width, canvas.height);
-            this.sendAction('action', canvas.toDataURL().replace(/^data:image\/(png|jpg);base64,/, ''));
+            this.sendAction('action', canvas.toDataURL());
         }
     }
 });
