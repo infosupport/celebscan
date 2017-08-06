@@ -1,20 +1,16 @@
 @import "ember-bootstrap/bootstrap";
 @import "image-capture";
+@import "ribbon";
 
-.progress-indicator {
-    margin-top: 20px;
+html, body {
+    overflow-x:hidden;
+    max-width: 100%;
 }
 
-.celebscan-results {
-    h2 small {
-        display: block;
-    }
+body {
+    padding-top: 30px;
 }
 
 .result-image {
     height: 416px;
-}
-
-.result-description {
-    margin-top: 20px;
 }

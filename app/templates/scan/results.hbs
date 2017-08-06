@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills">
+                <li class="active"><a href="#" {{action "newScan"}}>Start another scan</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1>You look like {{model.celebrity.name}} ({{model.celebrity.score}}%)</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{model.originalImage}}" class="img-responsive" alt="This is you">
+        </div>
+        <div class="col-md-6">
+                <img src="{{model.celebrity.picture}}" class="img-responsive result-image" alt="You look like {{model.celebrity.name}}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>About {{model.celebrity.name}}</h2>
+            <div class="result-description">{{{model.celebrity.description}}}</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>The full results</h2>
+                <p>We've found the following people that you look like</p>
+                <ul>
+                    {{#each model.others as |person|}}
+                    <li>{{person.name}} - {{person.score}}%</li>
+                    {{/each}}
+                </ul>
+        </div>
+    </div>
+</div>
