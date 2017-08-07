@@ -15,6 +15,25 @@ You will need the following things properly installed on your computer.
 * [Ember CLI](https://ember-cli.com/)
 * [PhantomJS](http://phantomjs.org/)
 
+## Essential configuration
+If you're planning on running the application locally. Please make sure that you have a [Clarifai](https://clarifai.com) API Key. You need to run the following on your terminal to set the right environment variable:
+
+```
+export API_KEY="<your-key>"
+```
+
+For production builds, please add a file `config/secrets.js` to the project. In this file you should add
+the following content:
+
+```
+module.exports = {
+  apiKey: "<your-key>"
+};
+```
+
+Notice that secrets file is not committed in Git. You need to add it on every machine where you want to produce
+a production build.
+
 ## Installation
 
 * `git clone <repository-url>` this repository
