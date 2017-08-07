@@ -5,7 +5,7 @@ import ENV from 'celebscan/config/environment';
 export default Ember.Service.extend({
     wikipedia: Ember.inject.service('wikipedia'),
     clarifai: new Clarifai.App({
-        apiKey: ENV.APP.apiKey
+        apiKey: ENV.APP.apiKey || 'DUMMY'
     }),
     scanForCelebrity(data) {
         let wikipedia = this.get('wikipedia');
