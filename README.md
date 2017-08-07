@@ -1,5 +1,7 @@
 # Celebscan 3000
 
+[![Build Status](https://travis-ci.org/infosupport/celebscan.svg?branch=master)](https://travis-ci.org/infosupport/celebscan)
+
 This is a sample application to demonstrate how fun AI can be.
 Run this application and take a picture with your webcam. 
 You'll be matched against celebrities and get back who you look like.
