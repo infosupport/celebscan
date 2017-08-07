@@ -16,7 +16,9 @@ export default Ember.Service.extend({
 
                 for(let page in pages) {
                     if(pages.hasOwnProperty(page)) {
-                        if(pages[page].title.toLowerCase() === name.toLowerCase()) {
+                        // Try to find the full name or a page that starts with the name of the person.
+                        // We included the start-with clause since some pages look like this: <name> (actor)
+                        if(pages[page].title.toLowerCase() === name.toLowerCase() || pages[page].title.toLowerCase().indexOf(name.toLowerCase()) === 0) {
                             return pages[page];
                         }
                     }
