@@ -42,6 +42,8 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV.APP.apiKey = process.env['API_KEY'];
   }
 
   if (environment === 'production') {
