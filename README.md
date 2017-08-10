@@ -16,6 +16,7 @@ You will need the following things properly installed on your computer.
 * [PhantomJS](http://phantomjs.org/)
 
 ## Essential configuration
+### Clarifai
 If you're planning on running the application locally. Please make sure that you have a [Clarifai](https://clarifai.com) API Key. You need to run the following on your terminal to set the right environment variable:
 
 ```
@@ -33,6 +34,11 @@ module.exports = {
 
 Notice that secrets file is not committed in Git. You need to add it on every machine where you want to produce
 a production build.
+
+### Application Insights
+If you want application insights to work for your installation, make sure that you have an instance of application insights configured.
+For development set the `INSTRUMENTATION_KEY` environment variable on your machine. As for production usage, include
+a `instrumentationKey` property in the secrets file alongside the API key for Clarifai.
 
 ## Installation
 

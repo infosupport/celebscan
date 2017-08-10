@@ -8,6 +8,7 @@ export default Ember.Service.extend({
         apiKey: ENV.APP.apiKey || 'DUMMY'
     }),
     scanForCelebrity(data) {
+        let appInsights = window.appInsights;
         let wikipedia = this.get('wikipedia');
         let clarifai = this.get('clarifai');
 
@@ -17,7 +18,7 @@ export default Ember.Service.extend({
         return clarifai.models.predict(modelIdentifier, { base64: pictureData }).then(function (response) {
             let data = response.outputs[0].data;
             let face = data && data.regions && data.regions[0].data && data.regions[0].data.face;
-
+            
             function percentage(number) {
                 return (number * 100).toFixed(2);
             }
@@ -36,6 +37,8 @@ export default Ember.Service.extend({
                         score: percentage(person.value)
                     });
                 }
+
+                appInsights.trackEvent('scanner.scanForCelebrity()', { 'photo': data, 'matches': people });
 
                 if (possibleMatches.length > 0) {
                     return wikipedia.findPerson(possibleMatches[0].name).then(function (result) {

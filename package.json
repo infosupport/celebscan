@@ -46,6 +46,7 @@
   },
   "private": true,
   "dependencies": {
+    "applicationinsights-js": "^1.0.11",
     "clarifai": "^2.2.0",
     "pitchly-webcamjs": "^1.0.1",
     "webcamjs": "^1.0.22"

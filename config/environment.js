@@ -30,7 +30,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV.APP.apiKey = process.env['API_KEY'];
+    ENV.APP.apiKey = process.env['API_KEY'] || '';
+    ENV.APP.instrumentationKey = process.env['INSTRUMENTATION_KEY'] || '';
   }
 
   if (environment === 'test') {
@@ -43,12 +44,15 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
 
-    ENV.APP.apiKey = process.env['API_KEY'];
+    ENV.APP.apiKey = process.env['API_KEY'] || '';
+    ENV.APP.apiKey = process.env['INSTRUMENTATION_KEY'] || '';
   }
 
   if (environment === 'production') {
     let secrets = require('./secrets.js');
-    ENV.APP.apiKey = secrets.apiKey;
+
+    ENV.APP.apiKey = secrets.apiKey || '';
+    ENV.APP.instrumentationKey = secrets.instrumentationKey || '';
   }
 
   return ENV;
