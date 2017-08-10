@@ -1,4 +1,6 @@
 /* eslint-env node */
+/* global ga */
+
 'use strict';
 
 module.exports = function(environment) {
@@ -32,6 +34,7 @@ module.exports = function(environment) {
 
     ENV.APP.apiKey = process.env['API_KEY'] || '';
     ENV.APP.instrumentationKey = process.env['INSTRUMENTATION_KEY'] || '';
+    ENV.APP.trackingKey = process.env['TRACKING_ID'] || '';
   }
 
   if (environment === 'test') {
@@ -45,7 +48,8 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
 
     ENV.APP.apiKey = process.env['API_KEY'] || '';
-    ENV.APP.apiKey = process.env['INSTRUMENTATION_KEY'] || '';
+    ENV.APP.instrumentationKey = process.env['INSTRUMENTATION_KEY'] || '';
+    ENV.APP.trackingKey = process.env['TRACKING_ID'] || '';
   }
 
   if (environment === 'production') {
@@ -53,6 +57,7 @@ module.exports = function(environment) {
 
     ENV.APP.apiKey = secrets.apiKey || '';
     ENV.APP.instrumentationKey = secrets.instrumentationKey || '';
+    ENV.APP.trackingKey = secrets.trackingKey || '';
   }
 
   return ENV;

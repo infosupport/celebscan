@@ -74,8 +74,9 @@ export function initialize(application) {
 
   Ember.Router.reopen({
     didTransition() {
-      let url = this.get('url');
+      this._super();
 
+      let url = this.get('url');
       appInsights.trackPageView(url, url);
     }
   });

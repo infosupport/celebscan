@@ -10,5 +10,8 @@ module.exports = {
   },
   rules: {
     
+  },
+  globals: {
+    ga: false
   }
 };
