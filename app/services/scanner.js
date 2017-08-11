@@ -41,7 +41,6 @@ export default Ember.Service.extend({
 
                 if (possibleMatches.length > 0) {
                     return wikipedia.findPerson(possibleMatches[0].name).then(function (result) {
-
                         if (result) {
                             Ember.Logger.info("Found person that matches the celebrity.");
 
@@ -50,6 +49,7 @@ export default Ember.Service.extend({
 
                                 return {
                                     celebrity: {
+                                        pageId: result.pageid,
                                         name: result.title,
                                         description: result.extract,
                                         score: percentage(possibleMatches[0].value),
@@ -57,6 +57,11 @@ export default Ember.Service.extend({
                                     },
                                     others: people
                                 };
+                            }.bind(this)).then(function(celebrityResult) {
+                              return wikipedia.findPage(result.pageid).then(function(pageUrl) {
+                                celebrityResult.celebrity.url = pageUrl;
+                                return celebrityResult;
+                              });
                             }.bind(this));
                         } else {
                             return {

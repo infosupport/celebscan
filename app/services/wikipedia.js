@@ -42,5 +42,14 @@ export default Ember.Service.extend({
 
             throw Error('Failed to retrieve picture');
         });
+    },
+    findPage(pageId) {
+      let url = `https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=${pageId}&inprop=url&origin=*&format=json`;
+
+      return fetch(url).then(function(response) {
+        return response.json();
+      }).then(function(pageData) {
+        return pageData.query.pages[pageId].fullurl;
+      });
     }
 });
