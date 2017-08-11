@@ -1,15 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <ul class="nav nav-pills">
-                <li class="active"><a href="#" {{action "newScan"}}>Start another scan</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <h1>You look like {{model.celebrity.name}} ({{model.celebrity.score}}%)</h1>
+            <h1>You look like {{model.celebrity.name}}</h1>
         </div>
     </div>
     <div class="row">
@@ -17,7 +9,12 @@
             <img src="{{model.originalImage}}" class="img-responsive" alt="This is you">
         </div>
         <div class="col-md-6">
-                <img src="{{model.celebrity.picture}}" class="img-responsive result-image" alt="You look like {{model.celebrity.name}}">
+                <!--<img src="{{model.celebrity.picture}}" class="img-responsive result-image" alt="You look like {{model.celebrity.name}}">-->
+          <div class="embed-responsive embed-responsive-4by3">
+          <div class="result-image embed-responsive-item" style="background-image: url({{model.celebrity.picture}});">
+
+          </div>
+          </div>
         </div>
     </div>
     <div class="row">
@@ -36,5 +33,10 @@
                     {{/each}}
                 </ul>
         </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <a href="#" class="btn-scan btn btn-lg btn-primary" {{action "newScan"}}>Start another scan</a>
+      </div>
     </div>
 </div>
