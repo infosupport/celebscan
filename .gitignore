@@ -25,3 +25,5 @@ package.json.ember-try
 config/secrets.js
 
 .DS_Store
+
+.idea/
