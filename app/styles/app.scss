@@ -4,6 +4,7 @@
 @import "site-nav";
 @import "site-footer";
 @import "results";
+@import "errors";
 
 html, body {
     overflow-x:hidden;
@@ -14,8 +15,5 @@ body {
     padding-top: 30px;
 }
 
-.result-image {
-    height: 416px;
-}
 
 

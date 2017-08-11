@@ -11,6 +11,9 @@ Router.map(function() {
     this.route('new');
     this.route('results');
   });
+
+  // Catch all route in case the user loads something silly.
+  this.route('errors.not-found', { path: "*" });
 });
 
 export default Router;
