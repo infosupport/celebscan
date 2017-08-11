@@ -2,13 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
     findPerson(name) {
-        let appInsights = window.appInsights;
         let url = `https://en.wikipedia.org/w/api.php?action=query&generator=search&format=json&exintro&exsentences=1&exlimit=max&gsrlimit=20&gsrsearch=hastemplate:Birth_date_and_age+${name}&pithumbsize=100&pilimit=max&prop=pageimages%7Cextracts&origin=*`;
 
-        appInsights.trackEvent('wikipedia.findPerson()', { 'name': name });
+        this.appInsights.trackEvent('wikipedia.findPerson()', { 'name': name });
 
         return fetch(url).then(function(response) {
-            return response.json();    
+            return response.json();
         }, function(err) {
             Ember.Logger.error(err);
         }).then(function(responseData) {
@@ -30,10 +29,9 @@ export default Ember.Service.extend({
         });
     },
     findImage(source) {
-        let appInsights = window.appInsights;
         let imageUrl = `https://en.wikipedia.org/w/api.php?action=query&titles=Image:${source}&prop=imageinfo&iiprop=url&origin=*&format=json`;
-        
-        appInsights.trackEvent('wikipedia.findImage()', { 'source': source });
+
+        this.appInsights.trackEvent('wikipedia.findImage()', { 'source': source });
 
         return fetch(imageUrl).then(function(response) {
             return response.json();
