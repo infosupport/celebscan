@@ -1,6 +1,8 @@
 @import "ember-bootstrap/bootstrap";
 @import "image-capture";
 @import "ribbon";
+@import "site-nav";
+@import "site-footer";
 
 html, body {
     overflow-x:hidden;
@@ -14,3 +16,5 @@ body {
 .result-image {
     height: 416px;
 }
+
+
